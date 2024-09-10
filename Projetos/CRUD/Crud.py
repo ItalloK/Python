@@ -35,6 +35,45 @@ def CadastrarPessoa():
         print(f"Ocorreu um erro ao tentar cadastrar a pessoa: {e}")
         conn.rollback()
 
+def AtualizarPessoa():
+    id = int(input("Digite o ID que deseja atualizar: "))
+    nome = input("Digite o novo nome para esta pessoa: ")
+    data = input("Digite a nova data de nascimento para essa pessoa (DD/MM/AAAA): ")
+    dataAmericana = datetime.strptime(data, "%d/%m/%Y")
+    telefone = input("Digite o novo telefone para esta pessoa: ")
+    email = input("Digite um novo email para esta pessoa: ")
+    try:
+        query = conn.cursor()
+        query.execute("""
+            UPDATE usuarios 
+            SET nome = %s, datadenascimento = %s, telefone = %s, email = %s 
+            WHERE id = %s
+            """, (nome, dataAmericana, telefone, email, id))
+        conn.commit()
+        if query.rowcount > 0:
+            print("Atualizado com sucesso!")
+        else:
+            print("Nenhuma linha afetada. A atualizacao pode não ter sido realizada.")
+    except Exception as e:
+        print(f"Ocorreu um erro ao tentar atualizar a pessoa: {e}")
+        conn.rollback()
+
+
+
+
+def DeletarPessoa():
+    id = int(input("Digite o ID que deseja deletar: "))
+    try:
+        query = conn.cursor()
+        query.execute("DELETE FROM usuarios WHERE id = %s", (id,))
+        conn.commit()
+        if query.rowcount > 0:
+            print("Deletado com sucesso!")
+        else:
+            print("Nenhuma linha afetada. Delete pode não ter sido concluido.")
+    except Exception as e:
+        print(f"Ocorreu um erro ao tentar atualizar a pessoa: {e}")
+        conn.rollback()
 
 
 
@@ -49,9 +88,9 @@ if(res == 1):
 elif(res == 2):
     CadastrarPessoa()
 elif(res == 3):
-    print("")
+    AtualizarPessoa()
 elif(res == 4):
-    print("")
+    DeletarPessoa()
 else:
     print("Encerrando Programa")
 
