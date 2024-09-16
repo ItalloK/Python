@@ -50,10 +50,30 @@ def MenuInserir():
     Query(vcon, vsql)
 
 def MenuDeletar():
-    print("")
+    os.system('cls')
+    id = int(input("Digite o ID do registro a ser Deletado: "))
+    vsql = "DELETE FROM tb_usuarios WHERE N_IDCONTATO = "+id
+    Query(vcon, vsql)
+
 
 def MenuAtualizar():
-    print("")
+    os.system('cls')
+    id = int(input("Digite o ID do registro a ser Alterado: "))
+    r = Consultar(vcon, "SELECT * FROM tb_contatos WHERE N_IDCONTATO = "+str(id))
+    resNome = r[0][1]
+    resTelefone = r[0][2]
+    resEmail = r[0][3]
+    nome = input("Digite o Nome: ")
+    telefone = input("Digite o Telefone: ")
+    email = input("Digite o Email: ")
+    if len(nome) == 0:
+        nome = resNome
+    if len(telefone) == 0:
+        telefone = resTelefone
+    if len(email) == 0:
+        email = resEmail
+    vsql = "UPDATE tb_contatos SET T_NOMECONTATO = '"+nome+"', T_TELEFONECONTATO = '"+telefone+"', T_EMAILCONTATO = '"+email+"' WHERE N_IDCONTATO = "+str(id)
+    Query(vcon, vsql)
 
 def MenuConsultarID():
     print("")
