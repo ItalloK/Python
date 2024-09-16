@@ -3,7 +3,7 @@ import sqlite3
 from sqlite3 import Error
 
 def ConexaoBanco(): ##Conexão
-    caminho = "E:\\Programação\\Python\\Aulas\\Banco\\banco.db"
+    caminho = "E:\\Programação\\Python\\Aulas\\Banco\\agenda.db"
     con = None
     try:
         con = sqlite3.connect(caminho)
@@ -12,6 +12,25 @@ def ConexaoBanco(): ##Conexão
     return con
 
 vcon = ConexaoBanco() # Chama a conexão
+
+def Query(conexao, sql):
+    try:
+        c = conexao.cursor()
+        c.execute(sql)
+        conexao.commit()
+    except Error as ex:
+        print(ex)
+    finally:
+        print("Operação realizada com Sucesso.")
+        #conexao.close()
+
+def Consultar(conexao, sql):
+    c = conexao.cursor()
+    c.execute(sql)
+    res = c.fetchall()
+    #conexao.close()
+    return res
+
 
 def MenuPrincipal():
     os.system('cls')
@@ -23,7 +42,12 @@ def MenuPrincipal():
     print("6 - Sair")
 
 def MenuInserir():
-    print("")
+    os.system('cls')
+    nome = input("Digite o Nome: ")
+    telefone = input("Digite o Telefone: ")
+    email = input("Digite o Email: ")
+    vsql = "INSERT INTO tb_contatos (T_NOMECONTATO, T_TELEFONECONTATO, T_EMAILCONTATO) VALUES ('"+nome+"','"+telefone+"','"+email+"')"
+    Query(vcon, vsql)
 
 def MenuDeletar():
     print("")
