@@ -1,10 +1,16 @@
 import pyautogui
 import time
 import random
+import os
+
+pastaRaiz = os.path.dirname(os.path.abspath(__file__))
+imgLike = pastaRaiz + "\\like.png"
+imgDeslike = pastaRaiz + "\\deslike.png"
+imgBaixar = pastaRaiz + "\\baixar.png"
 
 imagens = [
-    'E:\\Programação\\Python\\Projetos\\BOT\\like.png',
-    'E:\\Programação\\Python\\Projetos\\BOT\\deslike.png'
+    imgLike,
+    imgDeslike
 ]
 
 tempo = [1,2,3,4]
@@ -22,7 +28,7 @@ while procurar == "sim":
         time.sleep(1)
         print("não encontrei")
         try:
-            img2 = pyautogui.locateCenterOnScreen('E:\\Programação\\Python\\Projetos\\BOT\\baixar.png', confidence=0.85)
+            img2 = pyautogui.locateCenterOnScreen(imgBaixar, confidence=0.85)
             i=0
             while i != 13:
                 pyautogui.click(img2.x, img2.y)
