@@ -1,0 +1,11 @@
+Nome....: Italo
+Telefone: 99999999999
+Email...: italo@example.com
+Obs.....: FLAMENGO
+
+
+Nome....: italluzinho
+Telefone: 12345678912
+Email...: italo@example2.com
+Obs.....: ohayo pokko
+
