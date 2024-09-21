@@ -2,6 +2,8 @@ from tkinter import *
 import os
 import Banco
 
+print(x)
+
 def GravarDados():
     if tb_Nome.get() != "":
         vnome = tb_Nome.get()

@@ -1,8 +1,12 @@
 from tkinter import *
 import os
+import Banco
 
 def SemComando():
     print("")
+
+def NovoContato():
+    exec(open(Banco.pastaApp+"\\NovoContato.py").read(), {'x':10}) # Passando Parametro
 
 app = Tk()
 
@@ -13,7 +17,7 @@ app.configure(background="#DDE")
 barraDeMenus = Menu(app)
 
 menuContatos = Menu(barraDeMenus, tearoff=0)
-menuContatos.add_command(label="Novo", command=SemComando)
+menuContatos.add_command(label="Novo", command=NovoContato)
 menuContatos.add_command(label="Pesquisar", command=SemComando)
 menuContatos.add_command(label="Deletar", command=SemComando)
 menuContatos.add_separator()
