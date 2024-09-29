@@ -1,3 +1,3 @@
 ### Apenas um repositorio para deixar salvo minhas aulas de Python :)
 
-* Concluidas 79/??? aulas
+* Concluidas 86/86 aulas
