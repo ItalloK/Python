@@ -13,7 +13,7 @@ imagens = [
     imgDeslike
 ]
 
-tempo = [1,2,3,4]
+tempo = [2,3]
 
 procurar = "sim"
 
@@ -30,7 +30,7 @@ while procurar == "sim":
         try:
             img2 = pyautogui.locateCenterOnScreen(imgBaixar, confidence=0.85)
             i=0
-            while i != 13:
+            while i != 15:
                 pyautogui.click(img2.x, img2.y)
                 i+=1
         except:
